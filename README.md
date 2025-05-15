@@ -5,7 +5,7 @@ This is a lightweight sample API test automation framework using Python, Pytest,
 ## Features
 - Basic test structure with Pytest
 - Uses Requests for API interaction
-- Easy to extend with reusable utilities and fixtures
+- Structured for clarity and easy extension to support reusable utilities and fixtures
 - CI-ready with a sample GitLab pipeline
 
 ## Getting Started
