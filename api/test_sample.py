@@ -7,11 +7,13 @@ def test_get_user():
     assert response.status_code == 200
     assert response.json()["data"]["id"] == 2
 
-# def test_create_user():
-#     payload = {"name": "matt", "job": "qa engineer"}
-#     response = requests.post(f"{BASE_URL}/users", json=payload)
-#     assert response.status_code == 201
-#     assert "id" in response.json()
+def test_create_user():
+    payload = {"name": "matt", "job": "qa engineer"}
+    response = requests.post(f"{BASE_URL}/users", json=payload)
+    print("Status code: ", response.status_code)
+    print("Response body: ", response.text)
+    assert response.status_code == 201
+    assert "id" in response.json()
 
 def test_update_user():
     payload = {"name": "matthew", "job": "senior qa engineer"}
