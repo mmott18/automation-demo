@@ -26,12 +26,12 @@ def test_delete_user():
 
 def test_register_unsuccessful():
     payload = {"email": "sydney@fife"}
-    response = requests.post(f"{BASE_URL}/register", json=payload)
+    response = requests.post(f"{BASE_URL}/register", json=payload, headers=headers)
     assert response.status_code == 400
     assert "error" in response.json()
 
 def test_register_successful():
     payload = {"email": "eve.holt@reqres.in", "password": "pistol"}
-    response = requests.post(f"{BASE_URL}/register", json=payload)
+    response = requests.post(f"{BASE_URL}/register", json=payload, headers=headers)
     assert response.status_code == 200
     assert "id" in response.json() and "token" in response.json()
