@@ -1,6 +1,7 @@
 import requests
 
 BASE_URL = "https://reqres.in/api"
+headers = {"x-api-key": "reqres-free-v1"}
 
 def test_get_user():
     response = requests.get(f"{BASE_URL}/users/2")
@@ -9,20 +10,18 @@ def test_get_user():
 
 def test_create_user():
     payload = {"name": "matt", "job": "qa engineer"}
-    response = requests.post(f"{BASE_URL}/users", json=payload)
-    print("Status code: ", response.status_code)
-    print("Response body: ", response.text)
+    response = requests.post(f"{BASE_URL}/users", json=payload, headers=headers)
     assert response.status_code == 201
     assert "id" in response.json()
 
 def test_update_user():
     payload = {"name": "matthew", "job": "senior qa engineer"}
-    response = requests.put(f"{BASE_URL}/users/2", json=payload)
+    response = requests.put(f"{BASE_URL}/users/2", json=payload, headers=headers)
     assert response.status_code == 200
     assert response.json()["job"] == "senior qa engineer"
 
 def test_delete_user():
-    response = requests.delete(f"{BASE_URL}/users/2")
+    response = requests.delete(f"{BASE_URL}/users/2", headers=headers)
     assert response.status_code == 204
 
 def test_register_unsuccessful():
